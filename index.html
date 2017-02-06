@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Representative Search</title>
+	<meta name="description" content="Search your local and state representative using address">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+
+	<header>
+		<form class="search-form">
+			<label for="search-input">Enter your address:</label>
+			<input id="search-input" type="text" placeholder="1234 Some St, City" required>
+			<button type="submit">Submit</button>
+		</form>
+	</header>
+
+	<div class="result-container hidden">
+
+		<div class="profile senator-1">
+			<h2>Senator <span class="senator-1-name"></span><span class="senator-1-party"></span></h2>
+			<img class="image" id="senator-1-image" src="" alt="senator-pic">
+		</div>
+		<div class="profile senator-2">
+			<h2>Senator <span class="senator-2-name"></span><span class="senator-2-party"></span></h2>
+			<img class="image" id="senator-2-image" src="" alt="senator-pic">
+		</div>
+		<div class="profile congress">
+			<h2>Congressperson <span class="congress-name"></span><span class="congress-party"></span></h2>
+			<img class="image" id="congress-image" src="" alt="congress-pic">
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

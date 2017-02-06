@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: url(../images/capitol.png) no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    position: fixed;
+    overflow: hidden;
+    background-color: #333;
+    padding: 15px 15px 0 20px;
+    top: 0;
+    width: 100%;
+}
+
+label {
+    display: block;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#search-input {
+    display: inline-block;
+    width: 30%;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.result-container {
+    margin-top: 100px; margin-left: 30px;
+    text-align: center;
+}
+
+.profile {
+    border-radius: 20px 0 0 20px;
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+.image {
+    width: 90%;
+    border-radius: 15px;
+}
+
+/*************/
+
+.hidden {
+    display: none;
+}
+
+.red {
+    background-color: red;
+    color: white;
+    border: 3px solid #414959;
+}
+
+.blue {
+    background-color: #00aef3;
+    border: 3px solid #0F2446;
+}
