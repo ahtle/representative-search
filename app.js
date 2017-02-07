@@ -17,6 +17,9 @@ function renderGoogleCivicAPI(data) {
 //*******************senator1 ************
         $('.senator-1-name').text(data.officials[2].name);
         $('#senator-1-image').attr('src', data.officials[2].photoUrl);
+        $('.senator-1-number').text(data.officials[2].phones)
+        $('.senator-1-facebook').attr('href', 'https://www.facebook.com/' + data.officials[2].channels[0].id);
+        $('.senator-1-twitter').attr('href', 'https://twitter.com/' + data.officials[2].channels[1].id);
         if(data.officials[2].party === 'Democratic') {
             $('.senator-1-party').text(' (D)');
             $('.senator-1').removeClass('red');
@@ -33,13 +36,16 @@ function renderGoogleCivicAPI(data) {
 //*******************senator 2*****************
         $('.senator-2-name').text(data.officials[3].name);
         $('#senator-2-image').attr('src', data.officials[3].photoUrl);
+        $('.senator-2-number').text(data.officials[3].phones)
+        $('.senator-2-facebook').attr('href', 'https://www.facebook.com/' + data.officials[3].channels[0].id);
+        $('.senator-2-twitter').attr('href', 'https://twitter.com/' + data.officials[3].channels[1].id);
         if(data.officials[3].party === 'Democratic') {
             $('.senator-2-party').text(' (D)');
             $('.senator-2').removeClass('red');
             $('.senator-2').addClass('blue');
         }
         else if(data.officials[3].party === 'Republican') {
-            $('.senator-party').text(' (R)');
+            $('.senator-2-party').text(' (R)');
             $('.senator-2').removeClass('blue');
             $('.senator-2').addClass('red');
         }
@@ -49,6 +55,9 @@ function renderGoogleCivicAPI(data) {
 //******************congressman*****************
         $('.congress-name').text(data.officials[4].name);
         $('#congress-image').attr('src', data.officials[4].photoUrl);
+        $('.congress-number').text(data.officials[4].phones)
+        $('.congress-facebook').attr('href', 'https://www.facebook.com/' + data.officials[4].channels[0].id);
+        $('.congress-twitter').attr('href', 'https://twitter.com/' + data.officials[4].channels[1].id);
         if(data.officials[4].party === 'Democratic') {
             $('.congress-party').text(' (D)');
             $('.congress').removeClass('red');
@@ -67,9 +76,16 @@ function renderGoogleCivicAPI(data) {
     }
 }
 
+$('.profile').on('click', function(event) {
+    event.preventDefault();
+    $(this).siblings().toggleClass('hidden');
+})
 
 $('.search-form').submit(function(event) {
     event.preventDefault();
     state.query.address = $(this).find('#search-input').val();
     getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
 })
+
+//geocode AIzaSyBcbrynp55QPVYxQqzZMU9zlclf9SNFA6Y
+//https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBcbrynp55QPVYxQqzZMU9zlclf9SNFA6Y

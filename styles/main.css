@@ -8,6 +8,8 @@ body {
     background-attachment: fixed;
 }
 
+/*****************header and navigation bar******************/
+
 header {
     position: fixed;
     overflow: hidden;
@@ -30,15 +32,23 @@ label {
     margin-bottom: 20px;
 }
 
+/*****************result*****************/
+
 .result-container {
     margin-top: 100px; margin-left: 30px;
     text-align: center;
 }
 
+.profile-container {
+    display: flex;
+    padding-bottom: 20px;
+}
+
 .profile {
     border-radius: 20px 0 0 20px;
-    width: 400px;
-    margin-bottom: 20px;
+    width: 30%;
+    padding: 15px;
+    display: inline-block;
 }
 
 .image {
@@ -46,7 +56,18 @@ label {
     border-radius: 15px;
 }
 
-/*************/
+.contact {
+    border: 3px solid #0F2446;
+    border-radius: 0 20px 20px 0;
+    padding: 15px;
+    background-color: lightslategray;
+}
+
+.profile:hover {
+    cursor: pointer;
+}
+
+/*****************javascript classes****/
 
 .hidden {
     display: none;
