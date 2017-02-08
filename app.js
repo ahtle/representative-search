@@ -56,7 +56,7 @@ function renderGoogleCivicAPI(data) {
 }
 
 $('ul').on('click', 'li', function(event) {
-    event.preventDefault();
+    event.stopPropagation();
     $(this).find('.contact').toggleClass('hidden');
 })
 
