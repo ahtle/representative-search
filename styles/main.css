@@ -4,17 +4,20 @@
 
 body {
     margin: 0;
-    background: url(../images/capitol.png) no-repeat;
+    animation-name: bodyAnimation;
+    animation-duration: 4s;
     background-attachment: fixed;
+    font-family: sans-serif;
 }
 
 /*****************header and navigation bar******************/
 
 header {
+    display: flex;
+    align-items: center;
     position: fixed;
-    overflow: hidden;
     background-color: #333;
-    padding: 15px 15px 0 20px;
+    padding: 10px 20px 10px 20px;
     top: 0;
     width: 100%;
 }
@@ -25,47 +28,114 @@ label {
     margin-bottom: 10px;
 }
 
+.search-form {
+    width: 100%;
+    animation-name: searchAnimation;
+    animation-duration: 5s;
+}
+
 #search-input {
     display: inline-block;
-    width: 30%;
+    width: 300px;
     padding-left: 10px;
     margin-bottom: 20px;
+}
+
+/***************Logo********************/
+
+.logo-container {
+    top: 15px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 5px solid #f1242b;
+    border-bottom: 5px solid #00AEF3;
+    right: 20px;
+    height: 60px;
+    color: white;
+    font-size: 14pt;
+    animation-name: logoAnimation;
+    animation-duration: 4s;
+}
+
+.logo-R {
+    background-color: #f1242b;
+    font-size: 18pt;
+    font-family: "lft-etica", sans-serif;
+}
+
+.logo-D {
+    color: #00AEF3;
+    border: 3px solid #00AEF3;
+    border-radius: 50%;
+    font-size: 18pt;
+    font-family: "Gotham A", "Gotham B", sans-serif;
+}
+
+/************Initial message************/
+
+.initial-message {
+    position: relative;
+    top: 200px;
+    left: 30px;
+    font-size: 25pt;
+    color: lightgrey;
 }
 
 /*****************result*****************/
 
 .result-container {
-    margin-top: 100px; margin-left: 30px;
+    display: flex;
+    max-width: 1000px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 50px;
     text-align: center;
+    list-style-type: none;
 }
 
 .profile-container {
-    display: flex;
-    padding-bottom: 20px;
+    flex: 1;
+    padding: 20px;
 }
 
 .profile {
-    border-radius: 20px 0 0 20px;
-    width: 30%;
+    border-radius: 20px 20px 0 0;
     padding: 15px;
-    display: inline-block;
 }
 
 .image {
     width: 90%;
+    max-height: 290px;
     border-radius: 15px;
 }
 
-.contact {
-    border: 3px solid #0F2446;
-    border-radius: 0 20px 20px 0;
-    padding: 15px;
-    background-color: lightslategray;
+.contact h3 {
+    margin: 0;
+    padding: 3px 0 3px 0;
+    color: purple;
+}
+
+.facebook {
+    margin-right: 25px;
 }
 
 .profile:hover {
     cursor: pointer;
+    box-shadow: 10px 10px 5px #888888;
 }
+
+/*****************Footer*****************/
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #333;
+    height: 50px;
+    width: 100%;
+}
+
 
 /*****************javascript classes****/
 
@@ -82,4 +152,21 @@ label {
 .blue {
     background-color: #00aef3;
     border: 3px solid #0F2446;
+}
+
+/****************animation*************/
+
+@keyframes bodyAnimation {
+    from {background: #333;}
+    to {background: rgba(0,0,0,0);}
+}
+
+@keyframes logoAnimation {
+    0% {right:40%; top:40%;}
+    100% {right: 20px; top:20px;}
+}
+
+@keyframes searchAnimation {
+    0% {visibility: hidden;}
+    100% {visibility: visible;}
 }

@@ -1,0 +1,24 @@
+@media only screen and (max-width: 650px) {
+    #search-input {
+        width: 250px;
+    }
+    
+    .result-container {
+        flex-direction: column;
+    }
+
+    .profile-container {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #search-input {
+        width: 200px;
+    }
+
+    .logo-container {
+        display: none;
+    }
+}
