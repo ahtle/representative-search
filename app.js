@@ -94,33 +94,11 @@ $('.current-location').on('click', function(){
         var mapURL = state.GOOGLE_MAP_URL + 'latlng=' + location.latitude + ',' + location.longitude +'&key=' + state.GOOGLE_MAP_KEY;
 
         $.getJSON(mapURL, function(data){
-            console.log(data);
             state.query.address = data.results[0].formatted_address;
             $('.result-container').empty();
             getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
         });
-
-
-        //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
-
-    //     var geocoder = new google.maps.Geocoder();
-    //     var latLng = new google.maps.LatLng(location.latitude, location.longitude);
-
-    //     if (geocoder) {
-    //         geocoder.geocode({ 'latLng': latLng}, function (results, status) {
-    //             if (status == google.maps.GeocoderStatus.OK) {
-    //                 console.log(results[0].formatted_address);
-    //                 state.query.address = results[0].formatted_address;
-    //                 $('.result-container').empty();
-    //                 getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
-    //             }
-    //             else {
-    //                 console.log("Geocoding failed: " + status);
-    //             }
-    //         }); //geocoder.geocode()
-    //     }      
-    // } //showPosition
-    }
+    } //showPosition
 })
 
 //*******************animation*****************/
@@ -128,12 +106,12 @@ $('.logo-container').on('click', function(){
     $(this).animate({
         top: '15px',
         right: '20px',
-        height: '60px',
-        'font-size': '14pt'
+        height: '50px',
+        'font-size': '12pt'
     }, 2000);
     $(this).addClass('logoAnimation');
     $(this).find('.logo').animate({
-        'font-size': '16pt'
+        'font-size': '14pt'
     }, 2000);
     $(this).parent().addClass('bodyAnimation');
     $('.initial-font').animate({
