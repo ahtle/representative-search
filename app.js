@@ -1,5 +1,7 @@
 var state = {
     GOOGLE_CIVIC_URL: "https://www.googleapis.com/civicinfo/v2/representatives?",
+    GOOGLE_MAP_URL: "https://maps.googleapis.com/maps/api/geocode/json?",
+    GOOGLE_MAP_KEY: "AIzaSyApiQO-S3NrcwaJY_a6uicLg_gFWMio8Oc",
     query : {
         key: "AIzaSyCSXgDkOrHxRnDTU_MaYp06zvv7I0XL7tw",
         address: ""
@@ -89,23 +91,36 @@ $('.current-location').on('click', function(){
         location.latitude = position.coords.latitude;
         location.longitude = position.coords.longitude;
 
-        var geocoder = new google.maps.Geocoder();
-        var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+        var mapURL = state.GOOGLE_MAP_URL + 'latlng=' + location.latitude + ',' + location.longitude +'&key=' + state.GOOGLE_MAP_KEY;
 
-        if (geocoder) {
-            geocoder.geocode({ 'latLng': latLng}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    console.log(results[0].formatted_address);
-                    state.query.address = results[0].formatted_address;
-                    $('.result-container').empty();
-                    getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
-                }
-                else {
-                    console.log("Geocoding failed: " + status);
-                }
-            }); //geocoder.geocode()
-        }      
-    } //showPosition
+        $.getJSON(mapURL, function(data){
+            console.log(data);
+            state.query.address = data.results[0].formatted_address;
+            $('.result-container').empty();
+            getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
+        });
+
+
+        //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
+
+    //     var geocoder = new google.maps.Geocoder();
+    //     var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+
+    //     if (geocoder) {
+    //         geocoder.geocode({ 'latLng': latLng}, function (results, status) {
+    //             if (status == google.maps.GeocoderStatus.OK) {
+    //                 console.log(results[0].formatted_address);
+    //                 state.query.address = results[0].formatted_address;
+    //                 $('.result-container').empty();
+    //                 getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
+    //             }
+    //             else {
+    //                 console.log("Geocoding failed: " + status);
+    //             }
+    //         }); //geocoder.geocode()
+    //     }      
+    // } //showPosition
+    }
 })
 
 //*******************animation*****************/
