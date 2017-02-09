@@ -6,7 +6,9 @@ body {
     margin: 0;
     background-attachment: fixed;
     font-family: sans-serif;
-    background-color: #333;
+    background-color: white;
+    animation-name: bodyAnimation;
+    animation-duration: 5s;
 }
 
 /*****************header and navigation bar******************/
@@ -23,9 +25,9 @@ header {
 
 .search-form {
     width: 100%;
-    animation-name: searchAnimation;
-    animation-duration: 5s;
-    opacity: 0;
+    animation-name: opacityAnimation;
+    animation-duration: 4s;
+    opacity: 1;
 }
 
 .current-location {
@@ -51,24 +53,31 @@ header {
 .logo-container {
     position: fixed;
     display: flex;
-    top: 40%;
-    right: 40%;
+    top: 15px;
+    right: 20px;
     align-items: center;
     padding: 10px;
-    border-top: 20px solid #f1242b;
-    border-bottom: 20px solid #00AEF3;
-    height: 25%;
+    border-top: 5px solid #f1242b;
+    border-bottom: 5px solid #00AEF3;
+    height: 50px;
     color: white;
-    font-size: 30pt;
+    font-size: 14pt;
+    animation-name: logoAnimation;
+    animation-duration: 3s;
 }
 
 .logo-container {
     cursor: pointer;
 }
 
+.logo {
+    animation-name: logoFontAnimation;
+    animation-duration: 3s;
+    font-size: 16pt;
+}
+
 .R {
     background-color: #f1242b;
-    font-size: 40pt;
     font-family: "lft-etica", sans-serif;
 }
 
@@ -76,7 +85,6 @@ header {
     color: #00AEF3;
     border: 3px solid #00AEF3;
     border-radius: 50%;
-    font-size: 40pt;
     font-family: "Gotham A", "Gotham B", sans-serif;
 }
 
@@ -91,7 +99,8 @@ header {
 }
 
 .initial-font {
-    opacity: 0;
+    animation-name: opacityAnimation;
+    animation-duration: 3s;
 }
 
 /*****************result profile*****************/
@@ -169,32 +178,37 @@ footer {
 
 /****************animation*************/
 
-.logoAnimation {
-    animation-name: logoAnimation;
-    animation-duration: 2s;
-    border-top: 5px solid #f1242b;
-    border-bottom: 5px solid #00AEF3;;
-}
-
-.bodyAnimation {
-    animation-name: bodyAnimation;
-    animation-duration: 2s;
-    background: white;
-}
-
 @keyframes logoAnimation {
     0% {
         border-top: 20px solid #f1242b;
         border-bottom: 20px solid #00AEF3;
+        top: 40%;
+        right: 40%;
+        font-size: 30px;
+        height: 25%;
     }
     100% {
         border-top: 5px solid #f1242b;
         border-bottom: 5px solid #00AEF3;
+        top: 15px;
+        right: 20px;
+        font-size: 14pt;
+        height: 50px;
     }
 }
 
 @keyframes bodyAnimation {
     from {background: #333;}
     to {background: white}
+}
+
+@keyframes opacityAnimation {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes logoFontAnimation {
+    from {font-size: 35pt;}
+    to {font-size: 16pt;}
 }
 

@@ -102,22 +102,3 @@ $('.current-location').on('click', function(){
 })
 
 //*******************animation*****************/
-$('.logo-container').on('click', function(){
-    $(this).animate({
-        top: '15px',
-        right: '20px',
-        height: '50px',
-        'font-size': '12pt'
-    }, 2000);
-    $(this).addClass('logoAnimation');
-    $(this).find('.logo').animate({
-        'font-size': '14pt'
-    }, 2000);
-    $(this).parent().addClass('bodyAnimation');
-    $('.initial-font').animate({
-        opacity: 1
-    }, 2000);
-    $('.search-form').animate({
-        opacity: 1
-    }, 2000);
-})

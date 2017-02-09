@@ -48,10 +48,19 @@
 
     .logo-container {
         margin: 0;
+        right: 5px;
+        top: 18px;
+        padding: 5px;
+        border-top: 3px solid #f1242b;
+        border-bottom: 3px solid #00AEF3;
     }
 
     .logo {
-        font-size: 12px;
+        font-size: 12pt;
     }   
+
+    .current-location {
+        font-size: 10pt;
+    }
 
 }
