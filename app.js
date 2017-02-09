@@ -55,10 +55,14 @@ function renderGoogleCivicAPI(data) {
     }
 }
 
+/**********************Display contact*******************/
+
 $('ul').on('click', 'li', function(event) {
     event.stopPropagation();
     $(this).find('.contact').toggleClass('hidden');
 })
+
+/**********************Search button *********************/
 
 $('.search-form').submit(function(event) {
     event.preventDefault();
@@ -67,5 +71,60 @@ $('.search-form').submit(function(event) {
     getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
 })
 
-//geocode AIzaSyBcbrynp55QPVYxQqzZMU9zlclf9SNFA6Y
-//https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBcbrynp55QPVYxQqzZMU9zlclf9SNFA6Y
+//*********************Current location********************/
+$('.current-location').on('click', function(){
+    var location = {
+        latitude: '',
+        longitude: ''
+    };
+
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else{
+        alert("Geolocation is not supported by this browser.");
+    }
+
+    function showPosition(position){ 
+        location.latitude = position.coords.latitude;
+        location.longitude = position.coords.longitude;
+
+        var geocoder = new google.maps.Geocoder();
+        var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+
+        if (geocoder) {
+            geocoder.geocode({ 'latLng': latLng}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log(results[0].formatted_address);
+                    state.query.address = results[0].formatted_address;
+                    $('.result-container').empty();
+                    getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
+                }
+                else {
+                    console.log("Geocoding failed: " + status);
+                }
+            }); //geocoder.geocode()
+        }      
+    } //showPosition
+})
+
+//*******************animation*****************/
+$('.logo-container').on('click', function(){
+    $(this).animate({
+        top: '15px',
+        right: '20px',
+        height: '60px',
+        'font-size': '14pt'
+    }, 2000);
+    $(this).addClass('logoAnimation');
+    $(this).find('.logo').animate({
+        'font-size': '16pt'
+    }, 2000);
+    $(this).parent().addClass('bodyAnimation');
+    $('.initial-font').animate({
+        opacity: 1
+    }, 2000);
+    $('.search-form').animate({
+        opacity: 1
+    }, 2000);
+})
