@@ -3,26 +3,27 @@
 <head>
 	<title>Representative Search</title>
 	<meta name="description" content="Search your local and state representative using address">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
 	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
 <body>
 
 	<header>
 		<form class="search-form">
-			<label for="search-input">Enter your address:</label>
+			<p class="current-location">Use device's current location</p>
 			<input id="search-input" type="text" placeholder="1234 Some St, City" required>
 			<button type="submit">Submit</button>
 		</form>
 	</header>
 
 	<div class= "logo-container">
-		<h3><span class="logo-R">R</span>epresente<span class="logo-D">D</span></h3>
+		<p><span class="logo R">R</span>epresente<span class="logo D">D</span></p>
 	</div>
 
 	<div class="initial-message">
-		<h3>Enter your address to find your representatives!!!</h3>
+		<h3 class='initial-font'>Enter your address to find your representatives</h3>
 	</div>
 
 	<ul class="result-container hidden">

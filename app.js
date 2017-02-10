@@ -1,5 +1,7 @@
 var state = {
     GOOGLE_CIVIC_URL: "https://www.googleapis.com/civicinfo/v2/representatives?",
+    GOOGLE_MAP_URL: "https://maps.googleapis.com/maps/api/geocode/json?",
+    GOOGLE_MAP_KEY: "AIzaSyApiQO-S3NrcwaJY_a6uicLg_gFWMio8Oc",
     query : {
         key: "AIzaSyCSXgDkOrHxRnDTU_MaYp06zvv7I0XL7tw",
         address: ""
@@ -52,20 +54,57 @@ function renderGoogleCivicAPI(data) {
             template.find('.party').text(' (' + data.officials[i].party + ')');
 
         container.append(template);
+
+        $('#search-input').val(data.normalizedInput.line1 + ', ' + data.normalizedInput.city +
+            ', ' + data.normalizedInput.state + ', ' + data.normalizedInput.zip);
     }
 }
+
+/**********************Display contact*******************/
 
 $('ul').on('click', 'li', function(event) {
     event.stopPropagation();
     $(this).find('.contact').toggleClass('hidden');
 })
 
+/**********************Search button *********************/
+
 $('.search-form').submit(function(event) {
     event.preventDefault();
     state.query.address = $(this).find('#search-input').val();
     $('.result-container').empty();
+    $('body').addClass('bodyAnimation');
     getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
 })
 
-//geocode AIzaSyBcbrynp55QPVYxQqzZMU9zlclf9SNFA6Y
-//https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBcbrynp55QPVYxQqzZMU9zlclf9SNFA6Y
+//*********************Current location********************/
+$('.current-location').on('click', function(){
+    var location = {
+        latitude: '',
+        longitude: ''
+    };
+
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else{
+        alert("Geolocation is not supported by this browser.");
+    }
+
+    function showPosition(position){ 
+        location.latitude = position.coords.latitude;
+        location.longitude = position.coords.longitude;
+
+        var mapURL = state.GOOGLE_MAP_URL + 'latlng=' + location.latitude + ',' + location.longitude +'&key=' + state.GOOGLE_MAP_KEY;
+
+        $.getJSON(mapURL, function(data){
+            state.query.address = data.results[0].formatted_address;
+            $('.result-container').empty();
+            getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
+            $('body').addClass('bodyAnimation');
+            $('#search-input').val(data.results[0].formatted_address);
+        });
+    } //showPosition
+})
+
+//*******************animation*****************/

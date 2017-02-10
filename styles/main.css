@@ -4,10 +4,9 @@
 
 body {
     margin: 0;
-    animation-name: bodyAnimation;
-    animation-duration: 4s;
     background-attachment: fixed;
     font-family: sans-serif;
+    background-color: #333;
 }
 
 /*****************header and navigation bar******************/
@@ -22,16 +21,22 @@ header {
     width: 100%;
 }
 
-label {
-    display: block;
-    color: white;
-    margin-bottom: 10px;
-}
-
 .search-form {
     width: 100%;
-    animation-name: searchAnimation;
-    animation-duration: 5s;
+    animation-name: opacityAnimation;
+    animation-duration: 4s;
+    opacity: 1;
+}
+
+.current-location {
+    color: white;
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.current-location:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 #search-input {
@@ -44,32 +49,40 @@ label {
 /***************Logo********************/
 
 .logo-container {
-    top: 15px;
     position: fixed;
     display: flex;
+    top: 15px;
+    right: 20px;
     align-items: center;
     padding: 10px;
     border-top: 5px solid #f1242b;
     border-bottom: 5px solid #00AEF3;
-    right: 20px;
-    height: 60px;
+    height: 50px;
     color: white;
     font-size: 14pt;
     animation-name: logoAnimation;
-    animation-duration: 4s;
+    animation-duration: 3s;
 }
 
-.logo-R {
+.logo-container {
+    cursor: pointer;
+}
+
+.logo {
+    animation-name: logoFontAnimation;
+    animation-duration: 3s;
+    font-size: 16pt;
+}
+
+.R {
     background-color: #f1242b;
-    font-size: 18pt;
     font-family: "lft-etica", sans-serif;
 }
 
-.logo-D {
+.D {
     color: #00AEF3;
     border: 3px solid #00AEF3;
     border-radius: 50%;
-    font-size: 18pt;
     font-family: "Gotham A", "Gotham B", sans-serif;
 }
 
@@ -79,11 +92,16 @@ label {
     position: relative;
     top: 200px;
     left: 30px;
-    font-size: 25pt;
+    font-size: 20pt;
     color: lightgrey;
 }
 
-/*****************result*****************/
+.initial-font {
+    animation-name: opacityAnimation;
+    animation-duration: 3s;
+}
+
+/*****************result profile*****************/
 
 .result-container {
     display: flex;
@@ -111,6 +129,8 @@ label {
     max-height: 290px;
     border-radius: 15px;
 }
+
+/*****************result contact*****************/
 
 .contact h3 {
     margin: 0;
@@ -155,18 +175,42 @@ footer {
 }
 
 /****************animation*************/
-
-@keyframes bodyAnimation {
-    from {background: #333;}
-    to {background: rgba(0,0,0,0);}
+.bodyAnimation {
+    animation-name: bodyAnimation;
+    animation-duration: 3s;
+    background-color: white;
 }
 
 @keyframes logoAnimation {
-    0% {right:40%; top:40%;}
-    100% {right: 20px; top:20px;}
+    0% {
+        border-top: 20px solid #f1242b;
+        border-bottom: 20px solid #00AEF3;
+        top: 40%;
+        right: 40%;
+        font-size: 30px;
+        height: 25%;
+    }
+    100% {
+        border-top: 5px solid #f1242b;
+        border-bottom: 5px solid #00AEF3;
+        top: 15px;
+        right: 20px;
+        font-size: 14pt;
+        height: 50px;
+    }
 }
 
-@keyframes searchAnimation {
-    0% {visibility: hidden;}
-    100% {visibility: visible;}
+@keyframes bodyAnimation {
+    from {background-color: #333;}
+    to {background-color: white;}
+}
+
+@keyframes opacityAnimation {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes logoFontAnimation {
+    from {font-size: 35pt;}
+    to {font-size: 16pt;}
 }
