@@ -1,0 +1,2 @@
+# Representative-Search
+Search your state representative by running your address through the Google Civic API. Returns your senators and congressperson along with their phone number, twitter, and facebook. User can also device's current location feature instead of typing out address manually. This feature uses HTML native geolocation tool to get latitude and long.. passing it through Google Map API.
