@@ -18,6 +18,7 @@ function getDataFromGoogleCivicAPI(callback) {
         error: function( data ) {
             $('.initial-message').removeClass('hidden');
             $('.initial-message h3').text("No result");
+            $('body').addClass('noResult');
         }
     });
 }
@@ -54,6 +55,9 @@ function renderGoogleCivicAPI(data) {
             template.find('.party').text(' (' + data.officials[i].party + ')');
 
         container.append(template);
+
+        $('#search-input').val(data.normalizedInput.line1 + ', ' + data.normalizedInput.city +
+            ', ' + data.normalizedInput.state + ', ' + data.normalizedInput.zip);
     }
 }
 
@@ -69,6 +73,7 @@ $('ul').on('click', 'li', function(event) {
 $('.search-form').submit(function(event) {
     event.preventDefault();
     state.query.address = $(this).find('#search-input').val();
+    $('body').addClass('bodyAnimation');
     $('.result-container').empty();
     getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
 })
@@ -96,7 +101,9 @@ $('.current-location').on('click', function(){
         $.getJSON(mapURL, function(data){
             state.query.address = data.results[0].formatted_address;
             $('.result-container').empty();
+            $('body').addClass('bodyAnimation');
             getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
+            $('#search-input').val(data.results[0].formatted_address);
         });
     } //showPosition
 })

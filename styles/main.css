@@ -6,9 +6,7 @@ body {
     margin: 0;
     background-attachment: fixed;
     font-family: sans-serif;
-    background-color: white;
-    animation-name: bodyAnimation;
-    animation-duration: 5s;
+    background-color: #333;
 }
 
 /*****************header and navigation bar******************/
@@ -177,6 +175,18 @@ footer {
 }
 
 /****************animation*************/
+.bodyAnimation {
+    animation-name: bodyAnimation;
+    animation-duration: 3s;
+    background-color: white;
+}
+
+.noResult {
+    animation-name: noResult;
+    animation-duration: 3s;
+    background-color: #333;
+}
+
 
 @keyframes logoAnimation {
     0% {
@@ -198,8 +208,8 @@ footer {
 }
 
 @keyframes bodyAnimation {
-    from {background: #333;}
-    to {background: white}
+    from {background-color: #333;}
+    to {background-color: white;}
 }
 
 @keyframes opacityAnimation {
@@ -212,3 +222,7 @@ footer {
     to {font-size: 16pt;}
 }
 
+@keyframes noResult {
+    from {background-color: white;}
+    to {background-color: #333;}
+}
