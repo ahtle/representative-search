@@ -1,11 +1,19 @@
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 775px) {
     
     header {
-        padding: 5px 10px 5px 10px;
+        padding: 5px 10px 0px 10px;
+        border-top-width: 8px;
+        border-bottom-width: 8px;
     }
     
     #search-input {
-        width: 250px;
+        width: 300px;
+        height: 25px;
+        font-size: 10pt;
+    }
+
+    .logo-container {
+        margin-bottom: 5px;
     }
     
     .result-container {
@@ -14,16 +22,31 @@
     }
 
     .profile-container {
-        max-width: 400px;
+        max-width: 300px;
         margin: 0 auto;
     }
 
+    .title {
+        font-size: 12px;
+    }
+
+    .logo {
+        height: 50px;
+    }
+
     .initial-message {
+        width: 90%;
+        top: 100px;
         left: 15px;
     }
 
     .initial-font {
         font-size: 20px;
+    }
+
+    button {
+        height: 25px;
+        font-size: 12pt;
     }
 
     footer {
@@ -33,26 +56,31 @@
 
 @media only screen and (max-width: 500px) {
     #search-input {
-        width: 150px;
+        width: 160px;
+        padding-left: 5px;
     }
 
     .result-container {
         margin: 0;
         padding-left: 0;
+        padding-top: 70px;
     }
 
     .logo-container {
         height: 25px;
-        font-size: 10px;
+        font-size: 12px;
+    }
+
+    .logoAnimation {
+        border-top: 5px solid red;
+        border-bottom: 5px solid #00aef3;
     }
 
     .logo-container {
-        margin: 0;
+        margin: 0 auto;
         right: 5px;
         top: 18px;
         padding: 5px;
-        border-top: 3px solid #f1242b;
-        border-bottom: 3px solid #00AEF3;
     }
 
     .logo {

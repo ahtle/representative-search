@@ -33,8 +33,6 @@ function renderGoogleCivicAPI(data) {
             '<div class="profile">' +
                 '<h2 class="title">' + title[i] + '<span class="name">' + data.officials[i].name + '</span><span class="party"></span></h2>' +
                 '<img class="image" src="' + data.officials[i].photoUrl + '" alt="profile-pic">' +
-            '</div>' +
-            '<div class="contact hidden">' +
                 '<h3># <span class="phone">' + data.officials[i].phones + '</span></h3>' +
                 '<a href="https://www.facebook.com/' + data.officials[i].channels[0].id + '" target="_blank"><img class="facebook logo" src="images/facebook.png"></a>' +
                 '<a href="https://twitter.com/' + data.officials[i].channels[1].id + '" target="_blank"><img class="twitter logo" src="images/twitter.png"></a>' +
@@ -73,6 +71,11 @@ $('.search-form').submit(function(event) {
     event.preventDefault();
     state.query.address = $(this).find('#search-input').val();
     $('.result-container').empty();
+    $('header').addClass('headerAnimation');
+    $('header .search-form').removeClass('hidden');
+    $('header .search-form').addClass('opacityAnimation');
+    $('.logo-container').addClass('logoAnimation');
+    $('.initial-message form').addClass('hidden');
     $('body').addClass('bodyAnimation');
     getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
 })
@@ -101,8 +104,14 @@ $('.current-location').on('click', function(){
             state.query.address = data.results[0].formatted_address;
             $('.result-container').empty();
             getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
-            $('body').addClass('bodyAnimation');
             $('#search-input').val(data.results[0].formatted_address);
+            //animation
+            $('header').addClass('headerAnimation');
+            $('header .search-form').removeClass('hidden');
+            $('header .search-form').addClass('opacityAnimation');
+            $('.logo-container').addClass('logoAnimation');
+            $('.initial-message form').addClass('hidden');
+            $('body').addClass('bodyAnimation');
         });
     } //showPosition
 })
