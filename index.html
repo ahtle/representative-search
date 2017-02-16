@@ -5,6 +5,7 @@
 	<meta name="description" content="Search your local and state representative using address">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato|Lobster|Merriweather+Sans" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
 	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
 </head>
@@ -14,7 +15,7 @@
 		<form class="search-form hidden">
 			<label class="current-location block">Use device's current location</label>
 			<input id="search-input" type="text" placeholder="1234 Some St, City" required>
-			<button type="submit">Go</button>
+			<button type="submit">Search</button>
 		</form>
 		<a class= "logo-container" href=".">
 			<p><span class="logo R">R</span>epresente<span class="logo D">D</span></p>
@@ -22,9 +23,11 @@
 	</header>
 
 	<div class="initial-message">
-		<h3 class='initial-font'>Represented is a simple app that makes it easy for you to
-			identify and contact your representatives in the U.S. Congress.<br><br>
-			Enter your address below or use <span class="current-location">device's location</span> to get started.</h3>
+		<p class='initial-font'><a href="http://www.politico.com/story/2015/02/poll-millennials-state-senators-114867" target="_blank">Studies</a> 
+			showed that less than a quarter of American know their state's senators. <span class="lobster"><span style="color:red">R</span>epresente<span style="color:#00aef3">D</span></span> is a simple app that makes it easy for you to
+			identify and contact your representatives in the U.S. Congress through phone, Facebook, or Twitter.
+			<br><br><img class="hidden" src="images/screenshot-profile.png" alt="screenshot">Be empowered to get involved in issues that matters to you!
+			<br><br>your address below or use <span class="current-location">device's location</span> to get started.</p>
 		
 		<form class="search-form flex">
 			<input id="search-input" type="text" placeholder="1234 Some St, City" required>
@@ -37,6 +40,7 @@
 	</ul>
 
 	<footer>
+		<a href="https://github.com/anhhtle/Representative-Search" target="_blank"><img class="github" src="images/github.png" alt="GitHub Icon"></a>
 	</footer>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

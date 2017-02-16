@@ -53,8 +53,16 @@ function renderGoogleCivicAPI(data) {
 
         container.append(template);
 
-        $('#search-input').val(data.normalizedInput.line1 + ', ' + data.normalizedInput.city +
-            ', ' + data.normalizedInput.state + ', ' + data.normalizedInput.zip);
+        var normalizedAddress = data.normalizedInput.line1 + ', ' + data.normalizedInput.city +
+            ', ' + data.normalizedInput.state + ', ' + data.normalizedInput.zip;
+        
+        if(normalizedAddress.charAt(0) == ',')
+            normalizedAddress = normalizedAddress.substring(2);
+        
+        if(normalizedAddress.charAt(normalizedAddress.length - 1) == ' ')
+            normalizedAddress = normalizedAddress.substring(0,normalizedAddress.length - 2);
+
+        $('#search-input').val(normalizedAddress);
     }
 }
 
