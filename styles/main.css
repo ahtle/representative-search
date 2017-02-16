@@ -124,8 +124,9 @@ button:hover {
 }
 
 .initial-message img {
-    height: 250px;
-    float: left;
+    display: block;
+    height: 180px;
+    margin: 20px 0 10px 0px;
 }
 
 .initial-font {
