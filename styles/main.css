@@ -120,6 +120,7 @@ button:hover {
     top: 120px;
     font-size: 20pt;
     color: lightgrey;
+    font-family: 'Lato', 'Merriweather Sans', sans-serif;
 }
 
 .initial-message img {
@@ -190,6 +191,10 @@ button:hover {
 }
 
 /*****************result contact*****************/
+
+.profile {
+    font-family: 'Lato', 'Merriweather Sans', sans-serif;
+}
 
 .profile h3 {
     margin: 5px;

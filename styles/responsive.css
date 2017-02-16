@@ -57,7 +57,7 @@
     }
 
     #search-input {
-        width: 180px;
+        width: 190px;
         padding-left: 5px;
     }
 
@@ -68,13 +68,13 @@
     }
 
     .logo-container {
-        height: 25px;
+        height: 30px;
         font-size: 12px;
     }
 
     .logoAnimation {
-        border-top: 5px solid red;
-        border-bottom: 5px solid #00aef3;
+        border-top: 3px solid red;
+        border-bottom: 3px solid #00aef3;
     }
 
     .logo-container {
