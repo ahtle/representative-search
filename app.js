@@ -16,8 +16,11 @@ function getDataFromGoogleCivicAPI(callback) {
         dataType: 'json',
         success: callback,
         error: function( data ) {
-            $('.initial-message').removeClass('hidden');
-            $('.initial-message h3').text("No result");
+            var initialMessage = $('.initial-message');
+            initialMessage.removeClass('hidden');
+            initialMessage.html("No result");
+            initialMessage.css('text-align', 'center');
+            initialMessage.css('margin-top', '50px');
         }
     });
 }
