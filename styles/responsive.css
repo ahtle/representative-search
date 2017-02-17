@@ -22,12 +22,12 @@
     }
 
     .profile-container {
-        max-width: 300px;
+        min-width: 300px;
         margin: 0 auto;
     }
 
     .title {
-        font-size: 12px;
+        font-size: 15px;
     }
 
     .logo {
@@ -40,6 +40,10 @@
     }
 
     .initial-font {
+        font-size: 20px;
+    }
+
+    .initial-location {
         font-size: 20px;
     }
 
@@ -103,6 +107,10 @@
 
     .current-location {
         font-size: 10pt;
+    }
+
+    .initial-location {
+        font-size: 15pt;
     }
 
     footer {

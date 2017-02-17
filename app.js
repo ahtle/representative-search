@@ -32,7 +32,7 @@ function renderGoogleCivicAPI(data) {
         '<li class="profile-container">' +
             '<div class="profile">' +
                 '<h2 class="title">' + title[i] + '<span class="name">' + data.officials[i].name + '</span><span class="party"></span></h2>' +
-                '<img class="image" src="' + data.officials[i].photoUrl + '" alt="profile-pic">' +
+                '<div class="image-container"><img src="' + data.officials[i].photoUrl + '" alt="profile-pic"></div>' +
                 '<h3># <span class="phone">' + data.officials[i].phones + '</span></h3>' +
                 '<a href="https://www.facebook.com/' + data.officials[i].channels[0].id + '" target="_blank"><img class="facebook logo" src="images/facebook.png"></a>' +
                 '<a href="https://twitter.com/' + data.officials[i].channels[1].id + '" target="_blank"><img class="twitter logo" src="images/twitter.png"></a>' +
@@ -78,13 +78,14 @@ $('ul').on('click', 'li', function(event) {
 $('.search-form').submit(function(event) {
     event.preventDefault();
     state.query.address = $(this).find('#search-input').val();
+    var header = $('header');
     $('.result-container').empty();
-    $('header').addClass('headerAnimation');
-    $('header .search-form').removeClass('hidden');
-    $('header .search-form').addClass('opacityAnimation');
-    $('.logo-container').addClass('logoAnimation');
-    $('.initial-message form').addClass('hidden');
-    $('body').addClass('bodyAnimation');
+    header.addClass('headerAnimation');
+    header.find('form').removeClass('hidden');
+    header.find('form').addClass('opacityAnimation');
+    header.find('a').addClass('logoAnimation');
+    header.siblings().eq('0').addClass('hidden');
+    header.parent().addClass('bodyAnimation');
     getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
 })
 
