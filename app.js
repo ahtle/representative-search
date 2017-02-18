@@ -81,24 +81,50 @@ $('ul').on('click', 'li', function(event) {
     $(this).find('.contact').toggleClass('hidden');
 })
 
+/********************Animation****************************/
+function pageAnimation(){
+    var header = $('header');
+    header.addClass('headerAnimation');
+    header.find('form').removeClass('hidden');
+    header.find('form').addClass('opacityAnimation');
+    header.find('a').addClass('logoAnimation');
+    header.siblings().find('.initial-message').addClass('hidden');
+    header.parent().addClass('bodyAnimation');
+}
+
 /**********************Search button *********************/
 
 $('.search-form').submit(function(event) {
     event.preventDefault();
     state.query.address = $(this).find('#search-input').val();
-    var header = $('header');
     $('.result-container').empty();
-    header.addClass('headerAnimation');
-    header.find('form').removeClass('hidden');
-    header.find('form').addClass('opacityAnimation');
-    header.find('a').addClass('logoAnimation');
-    header.siblings().eq('0').addClass('hidden');
-    header.parent().addClass('bodyAnimation');
+    pageAnimation();
     getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
 })
 
 //*********************Current location********************/
+
+function showPosition(position){
+    location.latitude = position.coords.latitude;
+    location.longitude = position.coords.longitude;
+
+    var mapURL = state.GOOGLE_MAP_URL + 'latlng=' + location.latitude + ',' + location.longitude +'&key=' + state.GOOGLE_MAP_KEY;
+
+    $.getJSON(mapURL, function(data){
+        state.query.address = data.results[0].formatted_address;
+        $('.result-container').empty();
+        getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
+        $('#search-input').val(data.results[0].formatted_address);
+        $(this).css("pointer-events","auto");
+        //animation
+        pageAnimation();
+    });
+}
+
+
 $('.current-location').on('click', function(){
+    $(this).css("pointer-events", "none");
+
     var location = {
         latitude: '',
         longitude: ''
@@ -111,26 +137,15 @@ $('.current-location').on('click', function(){
         alert("Geolocation is not supported by this browser.");
     }
 
-    function showPosition(position){ 
-        location.latitude = position.coords.latitude;
-        location.longitude = position.coords.longitude;
-
-        var mapURL = state.GOOGLE_MAP_URL + 'latlng=' + location.latitude + ',' + location.longitude +'&key=' + state.GOOGLE_MAP_KEY;
-
-        $.getJSON(mapURL, function(data){
-            state.query.address = data.results[0].formatted_address;
-            $('.result-container').empty();
-            getDataFromGoogleCivicAPI(renderGoogleCivicAPI);
-            $('#search-input').val(data.results[0].formatted_address);
-            //animation
-            $('header').addClass('headerAnimation');
-            $('header .search-form').removeClass('hidden');
-            $('header .search-form').addClass('opacityAnimation');
-            $('.logo-container').addClass('logoAnimation');
-            $('.initial-message form').addClass('hidden');
-            $('body').addClass('bodyAnimation');
-        });
-    } //showPosition
+    showPosition(position);
 })
 
-//*******************animation*****************/
+/********************loader******************/
+
+$(document).ajaxStart(function(){
+    $(".loader").removeClass("hidden");
+});
+
+$(document).ajaxComplete(function(){
+    $(".loader").addClass("hidden");
+});
