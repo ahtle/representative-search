@@ -31,11 +31,16 @@ function renderGoogleCivicAPI(data) {
     container.removeClass('hidden');
     var title = ['', '', 'Senator ', 'Senator ', 'Congressperson '];
     for (var i = 2; i <= 4; i++) {
+        var imageUrl = 'images/no-image-available.png';
+        if(data.officials[i].photoUrl){
+            imageUrl = data.officials[i].photoUrl;
+        }
+
         var template = $(
         '<li class="profile-container">' +
             '<div class="profile">' +
                 '<h2 class="title">' + title[i] + '<span class="name">' + data.officials[i].name + '</span><span class="party"></span></h2>' +
-                '<div class="image-container"><img src="' + data.officials[i].photoUrl + '" alt="profile-pic"></div>' +
+                '<div class="image-container"><img src="' + imageUrl + '" alt="profile-pic"></div>' +
                 '<h3># <span class="phone">' + data.officials[i].phones + '</span></h3>' +
                 '<a href="https://www.facebook.com/' + data.officials[i].channels[0].id + '" target="_blank"><img class="facebook logo" src="images/facebook.png"></a>' +
                 '<a href="https://twitter.com/' + data.officials[i].channels[1].id + '" target="_blank"><img class="twitter logo" src="images/twitter.png"></a>' +
