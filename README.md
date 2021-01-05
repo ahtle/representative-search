@@ -16,9 +16,9 @@ With the current election, people are becoming more interested in politic more t
 
 ## Working version and screenshot
 
-Use this link to try the app for yourself! https://anhhtle.github.io/Representative-Search/
+Use this link to try the app for yourself! https://ahtle.github.io/representative-search/
 
-![alt tag](https://github.com/anhhtle/Representative-Search/blob/master/images/screenshot.png)
+![alt tag](https://github.com/ahtle/Representative-Search/blob/master/images/screenshot.png)
 
 ## Technology
 
